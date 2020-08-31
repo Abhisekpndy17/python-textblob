@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    
+{% endblock  %}
+
+{% block body %}
+    <div class="card mb-2">
+      <div class="card-body">
+        {{recieve_text}}.
+      </div>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item text-center"><h1>Text Setiments Result</h1></li>
+        <li class="list-group-item">No. Of Token: <b>{{number_of_token}}</b></li>
+          <!--start if statement -->
+        {% if blob_subjectivity == 0 %}
+          <li class="list-group-item">Subjectivity: <b>Your's Text is Neutral</b></li>    
+        {% elif blob_subjectivity > 0 %}
+          <li class="list-group-item">Subjectivity: <b>Your's Text is Positive</b></li>
+        {% else %}
+          <li class="list-group-item">Subjectivity: <b>Your's Text Is Negative</b></li>
+        {% endif %}
+        <!--end if statement -->
+        <li class="list-group-item">Polarity: <b>{{blob_sentiment}}</b></li>
+      </ul>
+      <a class="btn btn-primary mt-2" href="{{url_for('hello')}}">Go for new analyse</a>
+{% endblock  %}
